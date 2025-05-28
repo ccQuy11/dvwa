@@ -1,4 +1,4 @@
-low.php
+# low.php
 <?php
 
 // The page we wish to display
@@ -10,7 +10,7 @@ $file = str_replace( array( "../", "..\\" ), "", $file );
 
 ?>
 
-medium.php:
+# medium.php:
 <?php
 
 // The page we wish to display
@@ -22,5 +22,17 @@ $file = str_replace( array( "../", "..\\, ..././" ), "", $file );
 
 ?>
 
+#  high.php 
+<?php
 
+// The page we wish to display
+$file = $_GET[ 'page' ];
 
+// Input validation
+if( !fnmatch( "file*", $file ) && $file != "include.php" ) {
+    // This isn't the page we want!
+    echo "ERROR: File not found!";
+    exit;
+}
+
+?>
