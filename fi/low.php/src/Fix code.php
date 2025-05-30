@@ -22,4 +22,26 @@ $file = str_replace( array( "../", "..\\, ..././" ), "", $file );
 
 ?>
 
-`
+
+
+
+high.php:
+
+<?php
+
+// The page we wish to display
+$file = $_GET[ 'page' ];
+
+if (strpos($file, '/') === 0 || strpos($file, '\\') === 0) {
+    echo "ERROR: Absolute paths are not allowed!";
+    exit;
+}
+
+// Input validation
+if( !fnmatch( "file*", $file ) && $file != "include.php" ) {
+    // This isn't the page we want!
+    echo "ERROR: File not found!";
+    exit;
+}
+
+?>
