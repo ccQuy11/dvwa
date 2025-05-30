@@ -28,6 +28,14 @@ $file = str_replace( array( "../", "..\\, ..././" ), "", $file );
 // The page we wish to display
 $file = $_GET[ 'page' ];
 
+$file = str_replace( array( "http://", "https://" ), "", $file );
+$file = str_replace( array( "../", "..\\, ..././" ), "", $file );
+
+if (strpos($file, '/') === 0 || strpos($file, '\\') === 0) {
+    echo "ERROR: Absolute paths are not allowed!";
+    exit;
+}
+
 // Input validation
 if( !fnmatch( "file*", $file ) && $file != "include.php" ) {
     // This isn't the page we want!
