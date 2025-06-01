@@ -18,7 +18,7 @@ $file = $_GET[ 'page' ];
 
 // Input validation
 $file = str_replace( array( "http://", "https://" ), "", $file );
-$file = str_replace( array( "../", "..\\, ..././" ), "", $file );
+$file = str_replace( array( "../", "..\\, ..././" ), "", $file );  thêm cái ..././ để chặn cái path traversal đã được sử dụng
 
 ?>
 
@@ -31,7 +31,7 @@ $file = $_GET[ 'page' ];
 $file = str_replace( array( "http://", "https://" ), "", $file );
 $file = str_replace( array( "../", "..\\, ..././" ), "", $file );
 
-if (strpos($file, '/') === 0 || strpos($file, '\\') === 0) {
+if (strpos($file, '/') === 0 || strpos($file, '\\') === 0) {     //cái này dùng để ngăn chặn đường dẫn tuyệt đối
     echo "ERROR: Absolute paths are not allowed!";
     exit;
 }
